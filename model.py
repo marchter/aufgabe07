@@ -1,14 +1,16 @@
-from random import random
+import random
+
+questions = []
+
 
 class Question:
-    global questions
+
 
     def __init__(self, question, level, answers, index):
         self._question = question
         self._level = level
         self._answers = answers
         self._index = index
-        self.set_questions()
 
     def __str__(self):
         ret = self._question + " " + self._level + " " + str(self._answers) + " " + str(self._index)
@@ -32,7 +34,7 @@ class Question:
     def get_level(self):
         return self._level
 
-    def read_questions(self):
+def read_questions():
         fName = "millionaire.txt"
         q = []
         f = open(fName, "r")
@@ -42,11 +44,11 @@ class Question:
         f.close()
         return q
 
-    def read_question(line):
-        return Question.read_questions()[line]
+def read_question(line):
+        return read_questions()[line]
 
 
-    def get_rand_question(level):
+def get_rand_question(level):
         fName = "millionaire.txt"
         f = open(fName, "r")
         pool = []
@@ -58,7 +60,7 @@ class Question:
         f.close()
         return pool[random.randint(0, (len(pool) - 1))]
 
-    def set_questions(self):
+def set_questions():
         fName = "millionaire.txt"
         f = open(fName, "r")
         i = 0
@@ -68,7 +70,7 @@ class Question:
                 Question(line[1], line[0], [(line[2]), (line[3]), (line[4]), line[5].replace("\n", "")], 1))
             i = i + 1
 
-    def shuffle_answers():
+def shuffle_answers():
         for q in questions:
             q.set_index(random.randint(0, len(q.get_answers()) - 1))
             answers = q.get_answers()

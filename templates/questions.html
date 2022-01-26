@@ -7,19 +7,27 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Gamepage</title>
+    <title>Questions</title>
 </head>
 
 <body>
-    <h1>Game Page</h1>
-    <p>{{question}}</p>
+    <h1>Questions</h1>
+    <p>
+        All Questions
+    </p>
     <div class="container">
-            {% for answer in answers  %}
-            <a class="btn btn-info"  href="/game/1" type="button">{{answer}}</a>
-            {% endfor %}
-    </div>
-    <br>
 
+        <table border = 1>
+            {% for question in questions  %}
+
+             <tr>
+                 <td> {{question}} </td>
+             </tr>
+
+             {% endfor %}
+        </table>
+
+    </div>
 
 
 
