@@ -4,7 +4,7 @@ from model import Question, read_questions, set_questions, get_rand_question, sh
 app = Flask(__name__)
 set_questions()
 shuffle_answers()
-
+app.secret_key = '5#y2L”F4Q8z\n\ xec ]/'
 level = 0
 
 
@@ -21,8 +21,22 @@ def allQuestionsPage():
 @app.route("/game")
 @app.route("/game/<int:answer>")
 def game(answer=-1):
-    # TODO: question weitergeben und in die 4 buttons ausgeben
+
+    if(answer == -1):
+        session['level'] = 0
+
     question = get_rand_question(level)
+    session['current_question'] = question.get_index()
+    session['current_level'] = question.get_level()
+    #TODO: funkt nit weil scho a session gestartet wird bevor überhaupts frage gecklickt
+    if(session['current_question'] == answer):
+        level+1
+        print("Richtig")
+    else:
+        print("Wrong!")
+
+
+    # TODO: question weitergeben und in die 4 buttons ausgeben
     return render_template("game_index.html", question=question.get_question(), answers=question.get_answers())
 
 

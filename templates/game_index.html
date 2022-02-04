@@ -14,10 +14,13 @@
     <h1>Game Page</h1>
     <p>{{question}}</p>
     <div class="container">
-            {% for answer in answers  %}
-            <a class="btn btn-info"  href="/game/1" type="button">{{answer}}</a>
-            {% endfor %}
+            <a class="btn btn-info"  href="/game/0" type="button">{{answers[0]}}</a>
+            <a class="btn btn-info"  href="/game/1" type="button">{{answers[1]}}</a>
+            <a class="btn btn-info"  href="/game/2" type="button">{{answers[2]}}</a>
+            <a class="btn btn-info"  href="/game/3" type="button">{{answers[3]}}</a>
+
     </div>
+
     <br>
 
 
