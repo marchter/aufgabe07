@@ -24,16 +24,20 @@ def game(answer=-1):
 
     if(answer == -1):
         session['level'] = 0
-
-    question = get_rand_question(level)
-    session['current_question'] = question.get_index()
-    session['current_level'] = question.get_level()
-    #TODO: funkt nit weil scho a session gestartet wird bevor überhaupts frage gecklickt
-    if(session['current_question'] == answer):
+    elif(session['current_question'] == answer):
         level+1
         print("Richtig")
     else:
         print("Wrong!")
+        answer = -1
+        return render_template("lost.html")
+
+    #TODO: funkt nit weil scho a session gestartet wird bevor überhaupts frage gecklickt
+
+
+    question = get_rand_question(level)
+    session['current_question'] = question.get_index()
+    session['current_level'] = question.get_level()
 
 
     # TODO: question weitergeben und in die 4 buttons ausgeben
