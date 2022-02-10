@@ -1,5 +1,5 @@
 from flask import Flask, render_template, session
-from model import Question, read_questions, set_questions, get_rand_question, shuffle_answers
+from model import read_questions, set_questions, get_rand_question, shuffle_answers
 
 app = Flask(__name__)
 set_questions()
@@ -32,15 +32,11 @@ def game(answer=-1):
         answer = -1
         return render_template("lost.html")
 
-    #TODO: funkt nit weil scho a session gestartet wird bevor überhaupts frage gecklickt
-
-
     question = get_rand_question(level)
     session['current_question'] = question.get_index()
     session['current_level'] = question.get_level()
 
 
-    # TODO: question weitergeben und in die 4 buttons ausgeben
     return render_template("game_index.html", question=question.get_question(), answers=question.get_answers())
 
 
